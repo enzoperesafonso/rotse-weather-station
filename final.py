@@ -1,3 +1,5 @@
+# Enzo Peres Afonso 2025 https://github.com/enzoperesafonso
+
 from machine import Pin, I2C, WDT, disable_irq, enable_irq
 import time
 import math
