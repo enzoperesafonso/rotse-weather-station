@@ -52,3 +52,10 @@
 
 ### Step 2: Roof
 ![3D Printing Setup](../images/heated-inserts.png)
+
+### Step 3: Body
+![3D Printing Setup](../images/body.png)
+![3D Printing Setup](../images/completed-base.png)
+
+### Step 4: Finish 
+![3D Printing Setup](../images/completed-assemblies.png)
