@@ -21,7 +21,7 @@ Originally developed to support the ROTSE-III Namibia telescope revival project,
 
 ## Hardware Design
 
-![Cutaway View](images/cutaway.png)
+![Cutaway View](images/exploded.png)
 
 The weather station features a modular design with a weatherproof 3D printed enclosure. All components are easily accessible for maintenance while providing excellent protection against the elements.
 
