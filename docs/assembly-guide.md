@@ -2,7 +2,7 @@
 
 *Complete hardware and electronics assembly instructions for the Open Observatory Weather Station*
 
-![ROTSE Weather Station Exploded View](images/side-exploded.png)
+![ROTSE Weather Station Exploded View](../images/side-exploded.png)
 
 ## Bill of Materials
 
