@@ -42,3 +42,5 @@
 - Small screwdriver set
 - Drill with small bits
 - Multimeter (for testing)
+
+## Assembly Instructions
