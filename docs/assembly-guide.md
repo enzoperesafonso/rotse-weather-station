@@ -62,5 +62,41 @@
 
 ![S](../images/weather-station.png)
 
-## Electronics Instructions
-![3D Printing Setup](../images/electronics-wiring.png)
+### Step 5: Electronics Assembly
+
+![Electronics Wiring Diagram](images/electronics-wiring-diagram.png)
+
+1. **Prepare the Raspberry Pi Pico**:
+   - Install MicroPython or CircuitPython firmware
+   - Test basic functionality before installation
+
+2. **Connect the BMP280 sensor**:
+   ```
+   BMP280 -> Pi Pico
+   VCC    -> 3.3V
+   GND    -> GND
+   SCL    -> GP1 (I2C)
+   SDA    -> GP0 (I2C)
+   ```
+
+![BMP280 Wiring](images/bmp280-wiring.jpg)
+*[Image suggestion: Photo showing BMP280 sensor wired to Pi Pico with colored wires]*
+
+3. **Wire the Hall effect sensor**:
+   ```
+   Hall Sensor -> Pi Pico
+   VCC        -> 3.3V
+   GND        -> GND
+   OUT        -> GP2 (Digital input)
+   ```
+
+![Hall Sensor Wiring](images/hall-sensor-wiring.jpg)
+*[Image suggestion: Photo of Hall effect sensor with wiring connections clearly visible]*
+
+4. **Position the Hall effect sensor**:
+   - Mount the sensor near the rotor magnet path
+   - Ensure it detects magnet passes without interference
+   - Test rotation detection before final assembly
+
+![Hall Sensor Positioning](images/hall-sensor-positioning.jpg)
+*[Image suggestion: Photo showing Hall sensor positioned relative to rotating magnet path]*
