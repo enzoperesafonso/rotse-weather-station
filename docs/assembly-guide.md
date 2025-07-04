@@ -44,3 +44,6 @@
 - Multimeter (for testing)
 
 ## Assembly Instructions
+
+### Step 1: Rotor Assembly
+![3D Printing Setup](../images/rotor-assembly.png)
