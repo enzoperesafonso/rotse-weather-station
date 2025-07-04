@@ -60,4 +60,7 @@
 ### Step 4: Finish 
 ![3D Printing Setup](../images/completed-assemblies.png)
 
-![3D Printing Setup](../images/weather-station.png)
+![S](../images/weather-station.png)
+
+## Electronics Instructions
+![3D Printing Setup](../images/electronics-wiring.png)
