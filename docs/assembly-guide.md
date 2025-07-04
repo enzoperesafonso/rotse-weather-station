@@ -1,8 +1,8 @@
 # Weather Station Assembly Guide
 
-*Complete hardware and electronics assembly instructions for the Observatory Weather Station*
+*Complete hardware and electronics assembly instructions for the Open Observatory Weather Station*
 
-![ROTSE Weather Station Exploded View](../images/side-exploded.png)
+![ROTSE Weather Station Exploded View](images/side-exploded.png)
 
 ## Bill of Materials
 
@@ -29,8 +29,12 @@
 - 1x Raspberry Pi Pico
 - 1x AHT20 + BMP280 Temperature, Humidity, and Pressure Module
 - 1x Hall Effect Sensor A3144 
-- Jumper wires and breadboard (for prototyping)
 - MicroUSB cable for programming
+*Recommended*
+- 2x XH2.54 4P Male Connector
+- 2x XH2.54 4P Female Connector
+- 1x Double Side Prototype PCB Universal Printed Circuit Board (3x7cm)
+- 4m 6-core cable
 
 ## Tools Required
 - 3D printer (PLA or PETG recommended)
