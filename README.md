@@ -1,4 +1,4 @@
-# Open Weather Station
+# Open Observatory Weather Station
 
 Open-source, low-cost weather station designed for remote astronomical observatories
 
