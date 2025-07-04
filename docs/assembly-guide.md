@@ -47,3 +47,5 @@
 
 ### Step 1: Rotor Assembly
 ![3D Printing Setup](../images/rotor-assembly.png)
+
+![3D Printing Setup](../images/install-magnets.png)
