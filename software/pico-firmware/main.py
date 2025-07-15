@@ -13,17 +13,20 @@ I2C_SCL_PIN = 1
 I2C_SDA_PIN = 0
 
 # GPIO pin assignments
-HALL_EFFECT_PIN = 15     # Hall sensor input pin
+HALL_EFFECT_PIN = 2     # Hall sensor input pin
 STATUS_LED_PIN = 25      # Onboard LED for status heartbeat
 
 # Anemometer physical properties
-MAGNETS_PER_REV = 1                    # Number of magnets attached to the rotor
-ANEMOMETER_RADIUS_M = 0.09            # Radius of anemometer (meters)
+MAGNETS_PER_REV = 3                    # Number of magnets attached to the rotor
+ANEMOMETER_RADIUS_M = 0.15            # Radius of anemometer (meters)
 CIRCUMFERENCE_M = 2 * math.pi * ANEMOMETER_RADIUS_M  # Rotor circumference
-ANEMOMETER_FACTOR = 2.4               # Empirical calibration factor (tunable)
+
+# Calibration parameters (derived from actual vs uncalibrated measurements)
+CALIBRATION_SLOPE = 2.445645          # Linear slope factor
+CALIBRATION_OFFSET = 0         # Linear offset (m/s)
 
 # Timing intervals
-REPORT_INTERVAL_MS = 3000             # How often to report data (ms)
+REPORT_INTERVAL_MS = 5000             # How often to report data (ms)
 DEBOUNCE_MS = 10                      # Debounce time for Hall sensor input (ms)
 WATCHDOG_TIMEOUT_MS = 8000           # Watchdog reset interval (ms)
 
@@ -75,6 +78,12 @@ def get_rolling_avg(new_value, window=5):
         wind_buffer.pop(0)
     return sum(wind_buffer) / len(wind_buffer)
 
+# === WIND SPEED CALIBRATION ===
+
+def calibrate_wind_speed(uncalibrated_speed):
+    """Apply linear calibration: calibrated = slope * uncalibrated + offset"""
+    return CALIBRATION_SLOPE * uncalibrated_speed + CALIBRATION_OFFSET
+
 # === SENSOR READ WITH VALIDATION AND RETRIES ===
 
 def safe_sensor_read(retries=3):
@@ -98,8 +107,8 @@ def is_valid(temp, hum, pres):
 # === MAIN LOOP ===
 
 last_report_time = time.ticks_ms()
-print("Weather station started.")
-print("Format: T:temp H:humidity P:pressure WS:wind_speed_ms")
+# print("Weather station started.")
+# print("Format: T:temp H:humidity P:pressure WS:wind_speed_ms")
 
 while True:
     # Feed watchdog to avoid reset
@@ -121,11 +130,13 @@ while True:
         pulse_count = 0
         enable_irq(state)
 
-        # Calculate wind speed based on counted pulses
+        # Calculate raw wind speed based on counted pulses
         rotations = pulses / MAGNETS_PER_REV
         distance_m = rotations * CIRCUMFERENCE_M
         wind_speed_raw = distance_m / elapsed_seconds if elapsed_seconds > 0 else 0
-        wind_speed_calibrated = wind_speed_raw * ANEMOMETER_FACTOR
+        
+        # Apply calibration to get actual wind speed
+        wind_speed_calibrated = calibrate_wind_speed(wind_speed_raw)
 
         # Smooth wind speed using rolling average
         wind_speed_avg = get_rolling_avg(wind_speed_calibrated)
